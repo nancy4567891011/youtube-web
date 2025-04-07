@@ -1,7 +1,8 @@
-```html
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4CD916B7DW"></script>
 <script>
@@ -11,356 +12,1403 @@
 
   gtag('config', 'G-4CD916B7DW');
 </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouTube工具箱导航站</title>
+    <title>YouTube工具箱 | 一站式创作者资源导航</title>
+    
+    <!-- 引入Google字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- 引入Font Awesome图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
+        :root {
+            --primary-color: #ff3b30;
+            --primary-light: #ff6b61;
+            --primary-dark: #cc2f26;
+            --secondary-color: #1a1a1a;
+            --background-color: #f8f9fa;
+            --card-color: #ffffff;
+            --text-color: #333333;
+            --text-light: #666666;
+            --border-color: #e0e0e0;
+            --hover-color: #f0f0f0;
+            --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
         }
+        
         body {
-            background-color: #f5f5f5;
-            color: #333;
+            font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
             line-height: 1.6;
         }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 20px;
         }
-        header {
-            text-align: center;
-            padding: 30px 0;
-            background-color: #ff0000;
-            color: white;
-            margin-bottom: 30px;
+        
+        /* 导航栏 */
+        .navbar {
+            background-color: var(--card-color);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
         }
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .section {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            margin-bottom: 30px;
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: var(--primary-color);
         }
-        h2 {
-            color: #ff0000;
-            border-bottom: 2px solid #ff0000;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
+        
+        .logo i {
+            margin-right: 10px;
         }
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        
+        .nav-links {
+            display: flex;
             gap: 20px;
         }
-        .tool-card {
-            background-color: #fff;
-            border-radius: 6px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            padding: 15px;
-            transition: transform 0.3s ease;
+        
+        .nav-link {
+            font-weight: 500;
+            color: var(--text-color);
+            transition: var(--transition);
+            padding: 5px 10px;
+            border-radius: 4px;
         }
+        
+        .nav-link:hover {
+            color: var(--primary-color);
+            background-color: var(--hover-color);
+        }
+        
+        .language-switch {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+        
+        .language-switch:hover {
+            background-color: var(--hover-color);
+        }
+        
+        /* 头部 */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        /* 分类导航 */
+        .category-nav {
+            background-color: var(--card-color);
+            padding: 15px 0;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .category-list {
+            display: flex;
+            list-style: none;
+            overflow-x: auto;
+            padding-bottom: 5px;
+            gap: 15px;
+        }
+        
+        .category-list::-webkit-scrollbar {
+            height: 4px;
+        }
+        
+        .category-list::-webkit-scrollbar-track {
+            background: var(--border-color);
+            border-radius: 10px;
+        }
+        
+        .category-list::-webkit-scrollbar-thumb {
+            background: var(--primary-light);
+            border-radius: 10px;
+        }
+        
+        .category-item {
+            white-space: nowrap;
+        }
+        
+        .category-link {
+            display: block;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .category-link:hover, .category-link.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        /* 工具部分样式 */
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .section-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            margin-right: 15px;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-color);
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+        }
+        
+        .tool-card {
+            background-color: var(--card-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+        
         .tool-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
         }
-        .tool-name {
-            font-weight: bold;
-            font-size: 1.1rem;
-            margin-bottom: 8px;
-            color: #333;
+        
+        .tool-header {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
-        .tool-desc {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 15px;
-        }
-        .tool-link {
-            display: inline-block;
-            background-color: #ff0000;
+        
+        .tool-icon {
+            width: 48px;
+            height: 48px;
+            background-color: var(--primary-color);
             color: white;
-            padding: 5px 15px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            font-size: 1.5rem;
         }
-        .tool-link:hover {
-            background-color: #cc0000;
+        
+        .tool-name {
+            font-weight: 600;
+            font-size: 1.3rem;
         }
-        .sub-section {
-            margin-top: 20px;
+        
+        .tool-body {
+            padding: 0 20px 20px;
+            flex-grow: 1;
         }
-        .sub-section h3 {
-            color: #333;
+        
+        .tool-desc {
             margin-bottom: 15px;
-            padding-left: 10px;
-            border-left: 4px solid #ff0000;
+            color: var(--text-color);
+            font-size: 1rem;
         }
-        footer {
+        
+        .tool-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .tool-tag {
+            background-color: #f0f0f0;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+        
+        .tool-footer {
+            padding: 15px 20px;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .visit-btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .visit-btn:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        /* 页脚 */
+        .footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 50px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .copyright {
             text-align: center;
-            padding: 20px 0;
-            color: #666;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
             font-size: 0.9rem;
+        }
+        
+        /* 语言切换样式 */
+        .en {
+            display: none;
+        }
+        
+        html[lang="en"] .en {
+            display: block;
+        }
+        
+        html[lang="en"] .zh {
+            display: none;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>YouTube工具箱导航站</h1>
-        <p>一站式YouTube创作者资源导航</p>
-    </header>
-    
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <i class="fab fa-youtube"></i> 
+                <span class="zh">YouTube工具箱</span>
+                <span class="en">YouTube Toolkit</span>
+            </a>
+            <div class="nav-links">
+                <a href="#hot-topics" class="nav-link">
+                    <span class="zh">热门选题</span>
+                    <span class="en">Hot Topics</span>
+                </a>
+                <a href="#channel-benchmarking" class="nav-link">
+                    <span class="zh">频道对标</span>
+                    <span class="en">Channel Benchmarking</span>
+                </a>
+                <a href="#seo-tools" class="nav-link">
+                    <span class="zh">SEO工具</span>
+                    <span class="en">SEO Tools</span>
+                </a>
+                <a href="#revenue-analysis" class="nav-link">
+                    <span class="zh">收益分析</span>
+                    <span class="en">Revenue Analysis</span>
+                </a>
+                <a href="#creation-tools" class="nav-link">
+                    <span class="zh">创作工具</span>
+                    <span class="en">Creation Tools</span>
+                </a>
+                <a href="#download-tools" class="nav-link">
+                    <span class="zh">下载工具</span>
+                    <span class="en">Download Tools</span>
+                </a>
+                <div class="language-switch" id="langSwitch">
+                    <i class="fas fa-globe"></i>
+                    <span class="zh">中/EN</span>
+                    <span class="en">EN/中</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+<!-- 搜索框 HTML -->
+<div class="search-container">
     <div class="container">
-        <div class="section">
-            <h2>一、热门爆款选题挖掘工具</h2>
-            <div class="tools-grid">
-                <div class="tool-card">
-                    <div class="tool-name">Piped</div>
-                    <div class="tool-desc">查看YouTube趋势热门视频，无广告观看</div>
-                    <a href="https://piped.kavin.rocks/trending" class="tool-link" target="_blank">访问网站</a>
-                </div>
-                <div class="tool-card">
-                    <div class="tool-name">YewTube Trending</div>
-                    <div class="tool-desc">查看美国地区YouTube热门趋势视频</div>
-                    <a href="https://yewtu.be/feed/trending?type=Default&region=US" class="tool-link" target="_blank">访问网站</a>
-                </div>
-                <div class="tool-card">
-                    <div class="tool-name">Tubefilter</div>
-                    <div class="tool-desc">了解YouTube新闻、创作者资源和行业趋势</div>
-                    <a href="https://www.tubefilter.com/" class="tool-link" target="_blank">访问网站</a>
-                </div>
-                <div class="tool-card">
-                    <div class="tool-name">Exploding Topics</div>
-                    <div class="tool-desc">提供最新和最受欢迎的YouTube搜索关键词</div>
-                    <a href="https://explodingtopics.com/blog/top-youtube-searches" class="tool-link" target="_blank">访问网站</a>
-                </div>
-                <div class="tool-card">
-                    <div class="tool-name">TASTYEUTTS</div>
-                    <div class="tool-desc">根据CPM分析最赚钱的YouTube领域</div>
-                    <a href="https://www.tastyedits.com/most-profitable-youtube-niches/" class="tool-link" target="_blank">访问网站</a>
-                </div>
-            </div>
-        </div>
+        <form class="search-form" onsubmit="return searchTools()">
+            <input type="text" id="searchInput" class="search-input" placeholder="搜索YouTube工具...">
+            <button type="submit" class="search-button">
+                <i class="fas fa-search"></i>
+            </button>
+        </form>
+    </div>
+</div>
 
-        <div class="section">
-            <h2>二、频道对标挖掘工具</h2>
-            <div class="tools-grid">
-                <div class="tool-card">
-                    <div class="tool-name">FindAChannel</div>
-                    <div class="tool-desc">发现和分析YouTube频道，查看详细数据</div>
-                    <a href="https://www.findachannel.net/" class="tool-link" target="_blank">访问网站</a>
-                </div>
-                <div class="tool-card">
-                    <div class="tool-name">SimilarChannels</div>
-                    <div class="tool-desc">发现与特定YouTube频道相似的其他频道</div>
-                    <a href="https://similarchannels.com/" class="tool-link" target="_blank">访问网站</a>
-                </div>
-                <div class="tool-card">
-                    <div class="tool-name">Favoree</div>
-                    <div class="tool-desc">通过详细过滤器搜索和发现新的YouTube频道</div>
-                    <a href="https://www.favoree.io/" class="tool-link" target="_blank">访问网站</a>
-                </div>
-                <div class="tool-card">
-                    <div class="tool-name">YouTubeLearn</div>
-                    <div class="tool-desc">为创作者提供学习资源的平台</div>
-                    <a href="https://youtubelearn.softr.app/" class="tool-link" target="_blank">访问网站</a>
-                </div>
-                <div class="tool-card">
-                    <div class="tool-name">EduTube</div>
-                    <div class="tool-desc">提供精选高质量教育类YouTube视频</div>
-                    <a href="https://www.edutube.app/" class="tool-link" target="_blank">访问网站</a>
-                </div>
-            </div>
-        </div>
+<!-- 搜索结果区域 -->
+<div class="search-results-container container" id="searchResults" style="display: none;">
+    <h2 class="search-results-title">
+        <span class="zh">搜索结果</span>
+        <span class="en">Search Results</span>
+    </h2>
+    <div class="tools-grid" id="searchResultsGrid"></div>
+</div>
 
-        <div class="section">
-            <h2>三、关键词挖掘与SEO工具</h2>
-            <div class="tools-grid">
-                <div class="tool-card">
-                    <div class="tool-name">TubeBuddy</div>
-                    <div class="tool-desc">YouTube SEO优化和频道管理工具</div>
-                    <a href="https://chromewebstore.google.com/detail/tubebuddy-for-youtube/mhkhmbddkmdggbhaaaodilponhnccicb?hl=en-US" class="tool-link" target="_blank">访问网站</a>
-                </div>
-                <div class="tool-card">
-                    <div class="tool-name">Google Trends</div>
-                    <div class="tool-desc">分析全球和本地的搜索趋势</div>
-                    <a href="https://trends.google.com/trends/" class="tool-link" target="_blank">访问网站</a>
-                </div>
-                <div class="tool-card">
-                    <div class="tool-name">Answer The Public</div>
-                    <div class="tool-desc">发现人们在搜索引擎中常问的问题和关键词</div>
-                    <a href="https://answerthepublic.com/" class="tool-link" target="_blank">访问网站</a>
-                </div>
-                <div class="tool-card">
-                    <div class="tool-name">Keyword Tool</div>
-                    <div class="tool-desc">在线关键词研究工具，生成相关长尾关键词</div>
-                    <a href="https://keywordtool.io/" class="tool-link" target="_blank">访问网站</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>四、频道分析工具</h2>
-            <div class="tools-grid">
-                <div class="tool-card">
-                    <div class="tool-name">ViewStats</div>
-                    <div class="tool-desc">YouTube频道和视频分析工具</div>
-                    <a href="https://www.viewstats.com/" class="tool-link" target="_blank">访问网站</a>
-                </div>
-                <div class="tool-card">
-                    <div class="tool-name">YouTube Studio</div>
-                    <div class="tool-desc">YouTube官方管理平台</div>
-                    <a href="https://studio.youtube.com/" class="tool-link" target="_blank">访问网站</a>
-                </div>
-                <div class="tool-card">
-                    <div class="tool-name">NoxInfluencer</div>
-                    <div class="tool-desc">社交媒体分析工具，专注于YouTube数据分析</div>
-                    <a href="https://cn.noxinfluencer.com/" class="tool-link" target="_blank">访问网站</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>五、频道收益分析工具</h2>
-            <div class="tools-grid">
-                <div class="tool-card">
-                    <div class="tool-name">Social Blade</div>
-                    <div class="tool-desc">社交媒体数据分析平台，提供频道收入估算</div>
-                    <a href="https://socialblade.com/" class="tool-link" target="_blank">访问网站</a>
-                </div>
-                <div class="tool-card">
-                    <div class="tool-name">YouTube Monetization Checker</div>
-                    <div class="tool-desc">检测频道或视频是否已启用货币化功能</div>
-                    <a href="https://ytlarge.com/youtube/monetization-checker/" class="tool-link" target="_blank">访问网站</a>
-                </div>
-                <div class="tool-card">
-                    <div class="tool-name">Check Monetization</div>
-                    <div class="tool-desc">Chrome扩展工具，快速检查YouTube频道的货币化状态</div>
-                    <a href="https://chromewebstore.google.com/detail/check-monetization/hcpbkgmihdmgecabghhddmppipjnkdje" class="tool-link" target="_blank">访问网站</a>
-                </div>
-                <div class="tool-card">
-                    <div class="tool-name">YTLarge</div>
-                    <div class="tool-desc">YouTube变现检查器，查看平台是否变现</div>
-                    <a href="https://ytlarge.com/" class="tool-link" target="_blank">访问网站</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>六、内容创作工具</h2>
+<!-- 搜索功能的 JavaScript 代码 -->
+<script>
+    function searchTools() {
+        const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+        if (searchTerm === '') return false;
+        
+        const toolCards = document.querySelectorAll('.tool-card');
+        const searchResults = document.getElementById('searchResults');
+        const searchResultsGrid = document.getElementById('searchResultsGrid');
+        
+        // 清空之前的搜索结果
+        searchResultsGrid.innerHTML = '';
+        
+        // 计数匹配的工具
+        let matchCount = 0;
+        
+        // 遍历所有工具卡片
+        toolCards.forEach(card => {
+            const toolName = card.querySelector('.tool-name').textContent.toLowerCase();
+            const toolDesc = card.querySelector('.tool-desc').textContent.toLowerCase();
+            const toolTags = Array.from(card.querySelectorAll('.tool-tag')).map(tag => tag.textContent.toLowerCase());
             
-            <div class="sub-section">
-                <h3>封面工具</h3>
-                <div class="tools-grid">
-                    <div class="tool-card">
-                        <div class="tool-name">Canva</div>
-                        <div class="tool-desc">在线设计工具，制作视频封面等</div>
-                        <a href="https://www.canva.cn/" class="tool-link" target="_blank">访问网站</a>
-                    </div>
-                    <div class="tool-card">
-                        <div class="tool-name">Ostendo</div>
-                        <div class="tool-desc">Chrome扩展工具，截取网页或屏幕截图</div>
-                        <a href="https://chromewebstore.google.com/detail/ostendo" class="tool-link" target="_blank">访问网站</a>
-                    </div>
-                </div>
-            </div>
+            // 检查是否匹配搜索词
+            if (toolName.includes(searchTerm) || 
+                toolDesc.includes(searchTerm) || 
+                toolTags.some(tag => tag.includes(searchTerm))) {
+                
+                // 克隆匹配的卡片并添加到搜索结果
+                const clonedCard = card.cloneNode(true);
+                searchResultsGrid.appendChild(clonedCard);
+                matchCount++;
+            }
+        });
+        
+        // 显示或隐藏搜索结果区域
+        if (matchCount > 0) {
+            searchResults.style.display = 'block';
             
-            <div class="sub-section">
-                <h3>免版权音乐工具</h3>
-                <div class="tools-grid">
-                    <div class="tool-card">
-                        <div class="tool-name">TuneTank</div>
-                        <div class="tool-desc">提供高质量、免版税音乐</div>
-                        <a href="https://tunetank.com/" class="tool-link" target="_blank">访问网站</a>
-                    </div>
-                    <div class="tool-card">
-                        <div class="tool-name">NCS (NoCopyrightSounds)</div>
-                        <div class="tool-desc">提供高质量、免版权电子音乐</div>
-                        <a href="https://ncs.io/" class="tool-link" target="_blank">访问网站</a>
-                    </div>
-                    <div class="tool-card">
-                        <div class="tool-name">Chosic</div>
-                        <div class="tool-desc">免费音乐资源</div>
-                        <a href="https://www.chosic.com/free-music/all/" class="tool-link" target="_blank">访问网站</a>
-                    </div>
-                    <div class="tool-card">
-                        <div class="tool-name">Stocktune</div>
-                        <div class="tool-desc">免费音乐资源</div>
-                        <a href="https://stocktune.com/" class="tool-link" target="_blank">访问网站</a>
-                    </div>
+            // 滚动到搜索结果
+            searchResults.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            searchResults.style.display = 'block';
+            searchResultsGrid.innerHTML = `
+                <div class="no-results">
+                    <i class="fas fa-search"></i>
+                    <p class="zh">未找到与"${searchTerm}"相关的工具</p>
+                    <p class="en">No tools found related to "${searchTerm}"</p>
                 </div>
-            </div>
-            
-            <div class="sub-section">
-                <h3>免版权视频与图片</h3>
-                <div class="tools-grid">
-                    <div class="tool-card">
-                        <div class="tool-name">Pexels</div>
-                        <div class="tool-desc">提供高质量、免费可商用的照片和视频素材</div>
-                        <a href="https://www.pexels.com/zh-cn/" class="tool-link" target="_blank">访问网站</a>
-                    </div>
-                    <div class="tool-card">
-                        <div class="tool-name">Pixabay</div>
-                        <div class="tool-desc">提供免费的高质量图片、视频、插图和矢量图</div>
-                        <a href="https://pixabay.com/" class="tool-link" target="_blank">访问网站</a>
-                    </div>
-                    <div class="tool-card">
-                        <div class="tool-name">Free-Stock Video</div>
-                        <div class="tool-desc">免费视频素材</div>
-                        <a href="https://free-stock.video/" class="tool-link" target="_blank">访问网站</a>
-                    </div>
-                    <div class="tool-card">
-                        <div class="tool-name">Stockcake</div>
-                        <div class="tool-desc">免费视频素材</div>
-                        <a href="https://stockcake.com/" class="tool-link" target="_blank">访问网站</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+            `;
+        }
+        
+        // 阻止表单默认提交行为
+        return false;
+    }
+    
+    // 为搜索输入框添加实时搜索功能
+    document.getElementById('searchInput').addEventListener('input', function() {
+        if (this.value.trim() === '') {
+            document.getElementById('searchResults').style.display = 'none';
+        }
+    });
+</script>
 
-        <div class="section">
-            <h2>七、下载工具</h2>
+<!-- 添加搜索结果的CSS样式 -->
+<style>
+    /* 搜索框样式 */
+    .search-container {
+        background-color: var(--background-color);
+        padding: 20px 0;
+        border-bottom: 1px solid var(--border-color);
+    }
+    
+    .search-form {
+        display: flex;
+        max-width: 600px;
+        margin: 0 auto;
+        position: relative;
+    }
+    
+    .search-input {
+        width: 100%;
+        padding: 12px 20px;
+        border: 2px solid var(--border-color);
+        border-radius: 30px;
+        font-size: 1rem;
+        transition: var(--transition);
+    }
+    
+    .search-input:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(255, 59, 48, 0.2);
+    }
+    
+    .search-button {
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: var(--transition);
+    }
+    
+    .search-button:hover {
+        background-color: var(--primary-dark);
+    }
+    
+    /* 搜索结果样式 */
+    .search-results-container {
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border-color);
+    }
+    
+    .search-results-title {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        color: var(--text-color);
+    }
+    
+    .no-results {
+        text-align: center;
+        padding: 40px 0;
+        color: var(--text-muted);
+        width: 100%;
+    }
+    
+    .no-results i {
+        font-size: 3rem;
+        margin-bottom: 15px;
+        opacity: 0.5;
+    }
+    
+    .no-results p {
+        font-size: 1.2rem;
+    }
+</style>
+
+
+
+
+    <!-- 主要内容 -->
+    <div class="container">
+        <!-- 热门爆款选题挖掘工具 -->
+        <section class="section" id="hot-topics">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-fire"></i>
+                </div>
+                <h2 class="section-title">
+                    <span class="zh">热门爆款选题挖掘工具</span>
+                    <span class="en">Hot Topic Research Tools</span>
+                </h2>
+            </div>
+            
             <div class="tools-grid">
                 <div class="tool-card">
-                    <div class="tool-name">Y2mate</div>
-                    <div class="tool-desc">在线视频下载工具，支持多平台</div>
-                    <a href="https://www.y2mate.com/en949" class="tool-link" target="_blank">访问网站</a>
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <h3 class="tool-name">Piped</h3>
+                    </div>
+                    <div class="tool-body">
+                        <p class="tool-desc zh">开源的第三方YouTube客户端，查看当前YouTube上的热门趋势视频，且无需广告干扰。</p>
+                        <p class="tool-desc en">Open-source third-party YouTube client for viewing trending videos without ads.</p>
+                        <div class="tool-tags">
+                            <span class="tool-tag">YouTube趋势</span>
+                            <span class="tool-tag">热门视频</span>
+                            <span class="tool-tag">无广告观看</span>
+                        </div>
+                    </div>
+                    <div class="tool-footer">
+                        <a href="https://piped.kavin.rocks/trending" class="visit-btn" target="_blank">
+                            <span class="zh">访问网站</span>
+                            <span class="en">Visit Website</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
                 </div>
+                
                 <div class="tool-card">
-                    <div class="tool-name">Save4K</div>
-                    <div class="tool-desc">视频下载工具</div>
-                    <a href="https://save4k.su/" class="tool-link" target="_blank">访问网站</a>
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="tool-name">YewTube Trending</h3>
+                    </div>
+                    <div class="tool-body">
+                        <p class="tool-desc zh">开源的、隐私友好的第三方YouTube客户端，查看美国地区的YouTube热门趋势视频，无广告干扰。</p>
+                        <p class="tool-desc en">Privacy-friendly YouTube client for viewing US trending videos without ads.</p>
+                        <div class="tool-tags">
+                            <span class="tool-tag">YouTube趋势</span>
+                            <span class="tool-tag">美国地区</span>
+                            <span class="tool-tag">无广告</span>
+                        </div>
+                    </div>
+                    <div class="tool-footer">
+                        <a href="https://yewtu.be/feed/trending?type=Default&region=US" class="visit-btn" target="_blank">
+                            <span class="zh">访问网站</span>
+                            <span class="en">Visit Website</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
                 </div>
+                
                 <div class="tool-card">
-                    <div class="tool-name">Loader.to</div>
-                    <div class="tool-desc">视频下载工具</div>
-                    <a href="https://en.loader.to/4/" class="tool-link" target="_blank">访问网站</a>
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-newspaper"></i>
+                        </div>
+                        <h3 class="tool-name">Tubefilter</h3>
+                    </div>
+                    <div class="tool-body">
+                        <p class="tool-desc zh">专注于在线内容创作者和数字视频行业动态的平台，提供YouTube相关新闻、分析和资源。</p>
+                        <p class="tool-desc en">Platform focused on online content creators and digital video industry news.</p>
+                        <div class="tool-tags">
+                            <span class="tool-tag">YouTube新闻</span>
+                            <span class="tool-tag">创作者资源</span>
+                            <span class="tool-tag">行业趋势</span>
+                        </div>
+                    </div>
+                    <div class="tool-footer">
+                        <a href="https://www.tubefilter.com/" class="visit-btn" target="_blank">
+                            <span class="zh">访问网站</span>
+                            <span class="en">Visit Website</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
                 </div>
+                
                 <div class="tool-card">
-                    <div class="tool-name">NoTube</div>
-                    <div class="tool-desc">视频下载工具</div>
-                    <a href="https://notube.net/en/youtube-app-46" class="tool-link" target="_blank">访问网站</a>
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-bomb"></i>
+                        </div>
+                        <h3 class="tool-name">Exploding Topics</h3>
+                    </div>
+                    <div class="tool-body">
+                        <p class="tool-desc zh">提供最新和最受欢迎的YouTube搜索关键词和话题，帮助了解观众兴趣、优化SEO和创作热门内容。</p>
+                        <p class="tool-desc en">Provides the latest and most popular YouTube search keywords and topics.</p>
+                        <div class="tool-tags">
+                            <span class="tool-tag">关键词研究</span>
+                            <span class="tool-tag">内容趋势</span>
+                            <span class="tool-tag">SEO优化</span>
+                        </div>
+                    </div>
+                    <div class="tool-footer">
+                        <a href="https://explodingtopics.com/blog/top-youtube-searches" class="visit-btn" target="_blank">
+                            <span class="zh">访问网站</span>
+                            <span class="en">Visit Website</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
                 </div>
+                
                 <div class="tool-card">
-                    <div class="tool-name">Downsub</div>
-                    <div class="tool-desc">YouTube字幕下载工具</div>
-                    <a href="https://downsub.com/" class="tool-link" target="_blank">访问网站</a>
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <h3 class="tool-name">TASTYEUTTS</h3>
+                    </div>
+                    <div class="tool-body">
+                        <p class="tool-desc zh">根据CPM分析最赚钱的YouTube领域，帮助创作者选择有潜力的内容方向。</p>
+                        <p class="tool-desc en">Analyzes the most profitable YouTube niches based on CPM.</p>
+                        <div class="tool-tags">
+                            <span class="tool-tag">YouTube选题</span>
+                            <span class="tool-tag">CPM分析</span>
+                            <span class="tool-tag">变现策略</span>
+                        </div>
+                    </div>
+                    <div class="tool-footer">
+                        <a href="https://www.tastyedits.com/most-profitable-youtube-niches/" class="visit-btn" target="_blank">
+                            <span class="zh">访问网站</span>
+                            <span class="en">Visit Website</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
+        
+        <!-- 频道对标挖掘工具 -->
+        <section class="section" id="channel-benchmarking">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h2 class="section-title">
+                    <span class="zh">频道对标挖掘工具</span>
+                    <span class="en">Channel Benchmarking Tools</span>
+                </h2>
+            </div>
+            
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3 class="tool-name">FindAChannel</h3>
+                    </div>
+                    <div class="tool-body">
+                        <p class="tool-desc zh">专为发现和分析YouTube频道而设计的平台，提供频道详细数据和收入估算功能。</p>
+                        <p class="tool-desc en">Platform designed for discovering and analyzing YouTube channels.</p>
+                        <div class="tool-tags">
+                            <span class="tool-tag">频道发现</span>
+                            <span class="tool-tag">网红营销</span>
+                            <span class="tool-tag">SEO工具</span>
+                        </div>
+                    </div>
+                    <div class="tool-footer">
+                        <a href="https://www.findachannel.net/" class="visit-btn" target="_blank">
+                            <span class="zh">访问网站</span>
+                            <span class="en">Visit Website</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-clone"></i>
+                        </div>
+                        <h3 class="tool-name">SimilarChannels</h3>
+                    </div>
+                    <div class="tool-body">
+                        <p class="tool-desc zh">帮助用户发现与特定YouTube频道相似的其他频道，寻找潜在合作伙伴或竞争对手。</p>
+                        <p class="tool-desc en">Helps users discover channels similar to a specific YouTube channel.</p>
+                        <div class="tool-tags">
+                            <span class="tool-tag">频道发现</span>
+                            <span class="tool-tag">相似频道推荐</span>
+                            <span class="tool-tag">社区驱动</span>
+                        </div>
+                    </div>
+                    <div class="tool-footer">
+                        <a href="https://similarchannels.com/" class="visit-btn" target="_blank">
+                            <span class="zh">访问网站</span>
+                            <span class="en">Visit Website</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-thumbs-up"></i>
+                        </div>
+                        <h3 class="tool-name">Favoree</h3>
+                    </div>
+                    <div class="tool-body">
+                        <p class="tool-desc zh">专为发现和评价YouTube频道的平台，通过详细过滤器搜索和发现新的频道。</p>
+                        <p class="tool-desc en">Platform for discovering and rating YouTube channels.</p>
+                        <div class="tool-tags">
+                            <span class="tool-tag">频道发现</span>
+                            <span class="tool-tag">频道评价</span>
+                            <span class="tool-tag">内容推荐</span>
+                        </div>
+                    </div>
+                    <div class="tool-footer">
+                        <a href="https://www.favoree.io/" class="visit-btn" target="_blank">
+                            <span class="zh">访问网站</span>
+                            <span class="en">Visit Website</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 关键词挖掘与SEO工具 -->
+        <section class="section" id="seo-tools">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-key"></i>
+                </div>
+                <h2 class="section-title">
+                    <span class="zh">关键词挖掘与SEO工具</span>
+                    <span class="en">Keyword Research & SEO Tools</span>
+                </h2>
+            </div>
+            
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3 class="tool-name">TubeBuddy</h3>
+                    </div>
+                    <div class="tool-body">
+                        <p class="tool-desc zh">专为YouTube内容创作者设计的浏览器扩展和移动应用，提供一整套优化和管理工具。</p>
+                        <p class="tool-desc en">Browser extension and mobile app designed for YouTube content creators.</p>
+                        <div class="tool-tags">
+                            <span class="tool-tag">YouTube SEO</span>
+                            <span class="tool-tag">频道管理</span>
+                            <span class="tool-tag">视频优化</span>
+                        </div>
+                    </div>
+                    <div class="tool-footer">
+                        <a href="https://chromewebstore.google.com/detail/tubebuddy-for-youtube/mhkhmbddkmdggbhaaaodilponhnccicb?hl=en-US" class="visit-btn" target="_blank">
+                            <span class="zh">访问网站</span>
+                            <span class="en">Visit Website</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="tool-name">Google Trends</h3>
+                    </div>
+                    <div class="tool-body">
+                        <p class="tool-desc zh">谷歌提供的免费工具，用于分析全球和本地的搜索趋势，了解热门话题和关键词。</p>
+                        <p class="tool-desc en">Free tool by Google for analyzing global and local search trends.</p>
+                        <div class="tool-tags">
+                            <span class="tool-tag">趋势分析</span>
+                            <span class="tool-tag">数据统计</span>
+                            <span class="tool-tag">关键词研究</span>
+                        </div>
+                    </div>
+                    <div class="tool-footer">
+                        <a href="https://trends.google.com/trends/" class="visit-btn" target="_blank">
+                            <span class="zh">访问网站</span>
+                            <span class="en">Visit Website</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-question-circle"></i>
+                        </div>
+                        <h3 class="tool-name">Answer The Public</h3>
+                    </div>
+                    <div class="tool-body">
+                        <p class="tool-desc zh">发现人们在搜索引擎中常问的问题和关键词，为内容创作提供灵感。</p>
+                        <p class="tool-desc en">Discover questions and keywords people search for in search engines.</p>
+                        <div class="tool-tags">
+                            <span class="tool-tag">关键词研究</span>
+                            <span class="tool-tag">内容创作</span>
+                            <span class="tool-tag">问题挖掘</span>
+                        </div>
+                    </div>
+                    <div class="tool-footer">
+                        <a href="https://answerthepublic.com/
+ class="visit-btn" target="_blank">
+                            <span class="zh">访问网站</span>
+                            <span class="en">Visit Website</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-keyboard"></i>
+                        </div>
+                        <h3 class="tool-name">Keyword Tool</h3>
+                    </div>
+                    <div class="tool-body">
+                        <p class="tool-desc zh">在线关键词研究工具，生成相关长尾关键词，帮助优化视频标题和描述。</p>
+                        <p class="tool-desc en">Online keyword research tool that generates related long-tail keywords.</p>
+                        <div class="tool-tags">
+                            <span class="tool-tag">关键词研究</span>
+                            <span class="tool-tag">长尾关键词</span>
+                            <span class="tool-tag">SEO优化</span>
+                        </div>
+                    </div>
+                    <div class="tool-footer">
+                        <a href="https://keywordtool.io/" class="visit-btn" target="_blank">
+                            <span class="zh">访问网站</span>
+                            <span class="en">Visit Website</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 频道分析工具 -->
+        <section class="section" id="channel-analysis">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-chart-pie"></i>
+                </div>
+                <h2 class="section-title">
+                    <span class="zh">频道分析工具</span>
+                    <span class="en">Channel Analysis Tools</span>
+                </h2>
+            </div>
+            
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3 class="tool-name">ViewStats</h3>
+                    </div>
+                    <div class="tool-body">
+                        <p class="tool-desc zh">YouTube频道和视频分析工具，提供详细的观看数据和观众参与度指标。</p>
+                        <p class="tool-desc en">YouTube channel and video analytics tool providing detailed viewing data.</p>
+                        <div class="tool-tags">
+                            <span class="tool-tag">数据分析</span>
+                            <span class="tool-tag">观众洞察</span>
+                            <span class="tool-tag">表现追踪</span>
+                        </div>
+                    </div>
+                    <div class="tool-footer">
+                        <a href="https://www.viewstats.com/" class="visit-btn" target="_blank">
+                            <span class="zh">访问网站</span>
+                            <span class="en">Visit Website</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-tv"></i>
+                        </div>
+                        <h3 class="tool-name">YouTube Studio</h3>
+                    </div>
+                    <div class="tool-body">
+                        <p class="tool-desc zh">YouTube官方管理平台，提供全面的频道分析、内容管理和收益跟踪功能。</p>
+                        <p class="tool-desc en">YouTube's official management platform with comprehensive analytics.</p>
+                        <div class="tool-tags">
+                            <span class="tool-tag">官方工具</span>
+                            <span class="tool-tag">数据分析</span>
+                            <span class="tool-tag">内容管理</span>
+                        </div>
+                    </div>
+                    <div class="tool-footer">
+                        <a href="https://studio.youtube.com/" class="visit-btn" target="_blank">
+                            <span class="zh">访问网站</span>
+                            <span class="en">Visit Website</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        <h3 class="tool-name">NoxInfluencer</h3>
+                    </div>
+                    <div class="tool-body">
+                        <p class="tool-desc zh">社交媒体分析工具，专注于YouTube数据分析，帮助创作者了解频道表现和竞争对手情况。</p>
+                        <p class="tool-desc en">Social media analytics tool focusing on YouTube data analysis.</p>
+                        <div class="tool-tags">
+                            <span class="tool-tag">网红分析</span>
+                            <span class="tool-tag">竞争研究</span>
+                            <span class="tool-tag">数据追踪</span>
+                        </div>
+                    </div>
+                    <div class="tool-footer">
+                        <a href="https://cn.noxinfluencer.com/" class="visit-btn" target="_blank">
+                            <span class="zh">访问网站</span>
+                            <span class="en">Visit Website</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 频道收益分析工具 -->
+        <section class="section" id="revenue-analysis">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+                <h2 class="section-title">
+                    <span class="zh">频道收益分析工具</span>
+                    <span class="en">Channel Revenue Analysis Tools</span>
+                </h2>
+            </div>
+            
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <h3 class="tool-name">Social Blade</h3>
+                    </div>
+                    <div class="tool-body">
+                        <p class="tool-desc zh">社交媒体数据分析平台，提供频道收入估算、增长趋势和详细统计数据。</p>
+                        <p class="tool-desc en">Social media data analytics platform providing channel revenue estimates.</p>
+                        <div class="tool-tags">
+                            <span class="tool-tag">收入估算</span>
+                            <span class="tool-tag">数据分析</span>
+                            <span class="tool-tag">增长追踪</span>
+                        </div>
+                    </div>
+                    <div class="tool-footer">
+                        <a href="https://socialblade.com/" class="visit-btn" target="_blank">
+                            <span class="zh">访问网站</span>
+                            <span class="en">Visit Website</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h3 class="tool-name">YouTube Monetization Checker</h3>
+                    </div>
+                    <div class="tool-body">
+                        <p class="tool-desc zh">检测频道或视频是否已启用货币化，分析视频收益潜力。</p>
+                        <p class="tool-desc en">Checks if a channel or video is monetized and analyzes revenue potential.</p>
+                        <div class="tool-tags">
+                            <span class="tool-tag">货币化检测</span>
+                            <span class="tool-tag">收益分析</span>
+                            <span class="tool-tag">广告友好度</span>
+                        </div>
+                    </div>
+                    <div class="tool-footer">
+                        <a href="https://www.monetizemore.com/blog/youtube-monetization-checker/" class="visit-btn" target="_blank">
+                            <span class="zh">访问网站</span>
+                            <span class="en">Visit Website</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <h3 class="tool-name">Check Monet</h3>
+                    </div>
+                    <div class="tool-body">
+                        <p class="tool-desc zh">YouTube收益计算工具，根据观看量和受众群体估算视频收入。</p>
+                        <p class="tool-desc en">YouTube earnings calculator that estimates video revenue based on views.</p>
+                        <div class="tool-tags">
+                            <span class="tool-tag">收益计算</span>
+                            <span class="tool-tag">CPM分析</span>
+                            <span class="tool-tag">预测工具</span>
+                        </div>
+                    </div>
+                    <div class="tool-footer">
+                        <a href="https://checkmonet.com/" class="visit-btn" target="_blank">
+                            <span class="zh">访问网站</span>
+                            <span class="en">Visit Website</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 内容创作工具 -->
+        <section class="section" id="creation-tools">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-paint-brush"></i>
+                </div>
+                <h2 class="section-title">
+                    <span class="zh">内容创作工具</span>
+                    <span class="en">Content Creation Tools</span>
+                </h2>
+            </div>
+            
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-image"></i>
+                        </div>
+                        <h3 class="tool-name">Canva</h3>
+                    </div>
+                    <div class="tool-body">
+                        <p class="tool-desc zh">在线平面设计工具，提供丰富的模板创建YouTube缩略图、频道封面和社交媒体素材。</p>
+                        <p class="tool-desc en">Online graphic design tool with templates for YouTube thumbnails and covers.</p>
+                        <div class="tool-tags">
+                            <span class="tool-tag">缩略图设计</span>
+                            <span class="tool-tag">频道艺术</span>
+                            <span class="tool-tag">图形编辑</span>
+                        </div>
+                    </div>
+                    <div class="tool-footer">
+                        <a href="https://www.canva.com/" class="visit-btn" target="_blank">
+                            <span class="zh">访问网站</span>
+                            <span class="en">Visit Website</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-cut"></i>
+                        </div>
+                        <h3 class="tool-name">DaVinci Resolve</h3>
+                    </div>
+                    <div class="tool-body">
+                        <p class="tool-desc zh">专业级视频编辑软件，提供强大的剪辑、调色、音频处理和特效功能。</p>
+                        <p class="tool-desc en">Professional video editing software with powerful editing and color grading.</p>
+                        <div class="tool-tags">
+                            <span class="tool-tag">视频编辑</span>
+                            <span class="tool-tag">调色</span>
+                            <span class="tool-tag">音频处理</span>
+                        </div>
+                    </div>
+                    <div class="tool-footer">
+                        <a href="https://www.blackmagicdesign.com/products/davinciresolve/" class="visit-btn" target="_blank">
+                            <span class="zh">访问网站</span>
+                            <span class="en">Visit Website</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <h3 class="tool-name">YouTube Audio Library</h3>
+                    </div>
+                    <div class="tool-body">
+                        <p class="tool-desc zh">YouTube官方提供的免费音乐和音效库，可用于视频创作，无版权问题。</p>
+                        <p class="tool-desc en">Free music and sound effects library provided by YouTube for creators.</p>
+                        <div class="tool-tags">
+                            <span class="tool-tag">免费音乐</span>
+                            <span class="tool-tag">音效</span>
+                            <span class="tool-tag">无版权</span>
+                        </div>
+                    </div>
+                    <div class="tool-footer">
+                        <a href="https://studio.youtube.com/channel/audio-library" class="visit-btn" target="_blank">
+                            <span class="zh">访问网站</span>
+                            <span class="en">Visit Website</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-microphone"></i>
+                        </div>
+                        <h3 class="tool-name">Audacity</h3>
+                    </div>
+                    <div class="tool-body">
+                        <p class="tool-desc zh">免费开源的音频编辑软件，用于录制和编辑高质量音频，改善视频声音效果。</p>
+                        <p class="tool-desc en">Free, open-source audio editing software for recording and editing audio.</p>
+                        <div class="tool-tags">
+                            <span class="tool-tag">音频编辑</span>
+                            <span class="tool-tag">录音</span>
+                            <span class="tool-tag">音效处理</span>
+                        </div>
+                    </div>
+                    <div class="tool-footer">
+                        <a href="https://www.audacityteam.org/" class="visit-btn" target="_blank">
+                            <span class="zh">访问网站</span>
+                            <span class="en">Visit Website</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 下载工具 -->
+        <section class="section" id="download-tools">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-download"></i>
+                </div>
+                <h2 class="section-title">
+                    <span class="zh">下载工具</span>
+                    <span class="en">Download Tools</span>
+                </h2>
+            </div>
+            
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-file-download"></i>
+                        </div>
+                        <h3 class="tool-name">4K Video Downloader</h3>
+                    </div>
+                    <div class="tool-body">
+                        <p class="tool-desc zh">功能强大的视频下载工具，支持多种分辨率和格式下载YouTube视频和字幕。</p>
+                        <p class="tool-desc en">Powerful video download tool supporting various resolutions and formats.</p>
+                        <div class="tool-tags">
+                            <span class="tool-tag">视频下载</span>
+                            <span class="tool-tag">高清下载</span>
+                            <span class="tool-tag">字幕提取</span>
+                        </div>
+                    </div>
+                    <div class="tool-footer">
+                        <a href="https://www.4kdownload.com/products/product-videodownloader" class="visit-btn" target="_blank">
+                            <span class="zh">访问网站</span>
+                            <span class="en">Visit Website</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-closed-captioning"></i>
+                        </div>
+                        <h3 class="tool-name">DownSub</h3>
+                    </div>
+                    <div class="tool-body">
+                        <p class="tool-desc zh">在线工具，用于下载YouTube视频的字幕文件，支持多种格式和语言。</p>
+                        <p class="tool-desc en">Online tool for downloading YouTube video subtitles in various formats.</p>
+                        <div class="tool-tags">
+                            <span class="tool-tag">字幕下载</span>
+                            <span class="tool-tag">多语言</span>
+                            <span class="tool-tag">格式转换</span>
+                        </div>
+                    </div>
+                    <div class="tool-footer">
+                        <a href="https://downsub.com/" class="visit-btn" target="_blank">
+                            <span class="zh">访问网站</span>
+                            <span class="en">Visit Website</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-photo-video"></i>
+                        </div>
+                        <h3 class="tool-name">SaveFrom.net</h3>
+                    </div>
+                    <div class="tool-body">
+                        <p class="tool-desc zh">简单易用的在线视频下载工具，只需粘贴链接即可下载YouTube视频。</p>
+                        <p class="tool-desc en">Easy-to-use online video downloader that works with just a link paste.</p>
+                        <div class="tool-tags">
+                            <span class="tool-tag">在线下载</span>
+                            <span class="tool-tag">无需安装</span>
+                            <span class="tool-tag">快速简便</span>
+                        </div>
+                    </div>
+                    <div class="tool-footer">
+                        <a href="https://en.savefrom.net/" class="visit-btn" target="_blank">
+                            <span class="zh">访问网站</span>
+                            <span class="en">Visit Website</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
     
-    <footer>
-        <p>© 2025 YouTube工具箱导航站 - 为内容创作者提供便捷工具</p>
-    </footer>
+
+<!-- 页脚 -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>
+                    <span class="zh">关于我们</span>
+                    <span class="en">About Us</span>
+                </h3>
+                <p class="zh">YouTube工具箱是一个为YouTube创作者提供实用工具和资源的导航平台，帮助创作者提升内容质量和频道增长。</p>
+                <p class="en">YouTube Toolkit is a navigation platform providing useful tools and resources for YouTube creators to improve content quality and channel growth.</p>
+            </div>
+            <div class="footer-column">
+                <h3>
+                    <span class="zh">快速链接</span>
+                    <span class="en">Quick Links</span>
+                </h3>
+                <!-- 快速链接将在未来添加 -->
+                <!-- Quick links will be added in the future -->
+            </div>
+            <div class="footer-column">
+                <h3>
+                    <span class="zh">联系我们</span>
+                    <span class="en">Contact Us</span>
+                </h3>
+                <p>
+                    <a href="mailto:nancy4567891011@gmail.com" class="email-link">
+                        <span class="zh">点击这里发送邮件</span>
+                        <span class="en">Click here to send email</span>
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 YouTube工具箱 | YouTube Toolkit. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+    
+    <!-- 语言切换脚本 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const langSwitch = document.getElementById('langSwitch');
+            const html = document.documentElement;
+            
+            langSwitch.addEventListener('click', function() {
+                if (html.getAttribute('lang') === 'en') {
+                    html.setAttribute('lang', 'zh-CN');
+                } else {
+                    html.setAttribute('lang', 'en');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
-```
